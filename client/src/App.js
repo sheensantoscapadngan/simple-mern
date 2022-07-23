@@ -1,9 +1,9 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import UserLogin from './pages/UserLogin/UserLogin';
-import { createContext, useState } from 'react';
-import AuthorizedRoute from './components/AuthorizedRoute';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import UserLogin from "./pages/UserLogin/UserLogin";
+import { createContext, useState } from "react";
+import AuthorizedRoute from "./components/AuthorizedRoute";
 
 export const StateContext = createContext();
 
@@ -13,7 +13,7 @@ function App() {
   });
 
   return (
-    <StateContext.Provider value={state}>
+    <StateContext.Provider value={{ state, setState }}>
       <div className="App">
         <BrowserRouter>
           <Routes>
@@ -21,7 +21,7 @@ function App() {
               path="/"
               element={
                 <AuthorizedRoute>
-                  <HomePage />
+                  <HomePage/>
                 </AuthorizedRoute>
               }
             />

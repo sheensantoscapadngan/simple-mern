@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
-import LogInContainer from './components/LogInContainer';
-import axios from 'axios';
+import React, { useContext, useState } from "react";
+import LogInContainer from "./components/LogInContainer";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { StateContext } from "../../App";
 
 const UserLogin = () => {
   const [logIn, setLogIn] = useState(true);
+  const { setState } = useContext(StateContext);
+
+  const navigate = useNavigate();
 
   const handleChange = () => setLogIn(!logIn);
 
   const handleLogIn = async (username, password) => {
     const response = await axios.post(
-      'http://localhost:5000/api/v1/user/login',
+      "http://localhost:5000/api/v1/user/login",
       {
         username: username,
         password: password,
       }
     );
-    console.log(response.data);
-    //ari mo store sa jwt token sa local storage
-    //nya redirect to home page
+    setState(response.data);
+    navigate("/");
   };
 
   const handleSignUp = async (username, password) => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/v1/user/sign-up',
+        "http://localhost:5000/api/v1/user/sign-up",
         {
           username: username,
           password: password,
@@ -51,13 +55,13 @@ const UserLogin = () => {
     <div>
       <h1>PET NAMES</h1>
       <p>
-        Log In to access site{' '}
+        Log In to access site{" "}
         <span>
           <button onClick={handleChange}>Log in</button>
         </span>
       </p>
       <p>
-        Don't have an account?{' '}
+        Don't have an account?{" "}
         <span>
           <button onClick={handleChange}>Sign up</button>
         </span>
