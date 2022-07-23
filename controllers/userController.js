@@ -68,18 +68,3 @@ export const logIn = async (req, res) => {
     throw new ServerError('Something went wrong');
   }
 };
-
-export const testJWT = async (req, res) => {
-  const { token } = req.body;
-
-  if (!token) {
-    throw new InvalidRequestError('Please provide token');
-  }
-
-  const jwt = await jsonwebtoken.verify(token, process.env.JWT_SECRET);
-  const user = await UserSchema.findOne({ _id: jwt.id });
-  if (!user) {
-    return res.status(400).json({ success: false, msg: 'Invalid JWT' });
-  }
-  res.status(200).json({ success: true, data: user });
-};
