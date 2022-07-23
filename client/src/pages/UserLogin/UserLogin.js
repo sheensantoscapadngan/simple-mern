@@ -16,7 +16,10 @@ const UserLogin = () => {
       }
     );
     console.log(response.data);
+    //ari mo store sa jwt token sa local storage
+    //nya redirect to home page
   };
+
   const handleSignUp = async (username, password) => {
     try {
       const response = await axios.post(

@@ -8,7 +8,7 @@ export const StateContext = createContext();
 
 function App() {
   const [state, setState] = useState({
-    token: undefined,
+    token: undefined, //check first localstorage if naay token na store, if naa mao ang value gamiton
   });
 
   return (
