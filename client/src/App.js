@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import UserLogin from './pages/UserLogin/UserLogin';
 import { createContext, useState } from 'react';
+import AuthorizedRoute from './components/AuthorizedRoute';
 
 export const StateContext = createContext();
 
@@ -16,7 +17,14 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route index path="/" element={<HomePage />} />
+            <Route
+              path="/"
+              element={
+                <AuthorizedRoute>
+                  <HomePage />
+                </AuthorizedRoute>
+              }
+            />
             <Route path="/login" element={<UserLogin />} />
           </Routes>
         </BrowserRouter>
