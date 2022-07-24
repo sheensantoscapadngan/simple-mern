@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const DisplayAnimalsPage = () => {
-  return <div></div>
-}
+  return <div></div>;
+};
 
-export default DisplayAnimalsPage
+export default DisplayAnimalsPage;
