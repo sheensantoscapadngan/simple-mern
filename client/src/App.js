@@ -1,16 +1,16 @@
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import UserLogin from "./pages/UserLogin/UserLogin";
-import { createContext, useState } from "react";
-import AuthorizedRoute from "./components/AuthorizedRoute";
+import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage/HomePage'
+import UserLogin from './pages/UserLogin/UserLogin'
+import { createContext, useState } from 'react'
+import AuthorizedRoute from './components/AuthorizedRoute'
 
-export const StateContext = createContext();
+export const StateContext = createContext()
 
 function App() {
   const [state, setState] = useState({
     token: undefined, //check first localstorage if naay token na store, if naa mao ang value gamiton
-  });
+  })
 
   return (
     <StateContext.Provider value={{ state, setState }}>
@@ -21,7 +21,7 @@ function App() {
               path="/"
               element={
                 <AuthorizedRoute>
-                  <HomePage/>
+                  <HomePage />
                 </AuthorizedRoute>
               }
             />
@@ -30,7 +30,7 @@ function App() {
         </BrowserRouter>
       </div>
     </StateContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App
