@@ -40,10 +40,7 @@ const UserLogin = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const username = e?.target[0]?.value;
-    const password = e?.target[1]?.value;
+  const handleSubmit = (username,password) => {
     if (username && password) {
       if (logIn) {
         return handleLogIn(username, password);
