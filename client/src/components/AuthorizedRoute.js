@@ -3,14 +3,14 @@ import { Navigate } from 'react-router';
 import { StateContext } from '../App';
 
 const AuthorizedRoute = (props) => {
-  const { element } = props;
-  const state = useContext(StateContext);
+  const { children } = props;
+  const { state } = useContext(StateContext);
 
   if (!state.token) {
     return <Navigate to="/login" />;
   }
 
-  return element;
+  return children;
 };
 
 export default AuthorizedRoute;
