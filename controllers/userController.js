@@ -1,7 +1,6 @@
 import { DUPLICATE_KEY_ERROR_CODE } from '../constants/mongoDbErrorCodes.js';
 import UserSchema from '../db/models/userSchema.js';
 import { InvalidRequestError, ServerError } from '../utils/CustomErrors.js';
-import jsonwebtoken from 'jsonwebtoken';
 
 export const signUp = async (req, res) => {
   const { username, password } = req.body;
