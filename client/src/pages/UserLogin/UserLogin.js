@@ -40,7 +40,7 @@ const UserLogin = () => {
     }
   };
 
-  const handleSubmit = (username,password) => {
+  const handleSubmit = (username, password) => {
     if (username && password) {
       if (logIn) {
         return handleLogIn(username, password);
@@ -48,24 +48,14 @@ const UserLogin = () => {
       handleSignUp(username, password);
     }
   };
-
   return (
-    <div>
-      <h1>PET NAMES</h1>
-      <p>
-        Log In to access site{' '}
-        <span>
-          <button onClick={handleChange}>Log in</button>
-        </span>
-      </p>
-      <p>
-        Don't have an account?{' '}
-        <span>
-          <button onClick={handleChange}>Sign up</button>
-        </span>
-      </p>
-      <LogInContainer logIn={logIn} handleSubmit={handleSubmit} />
-    </div>
+    <>
+      <LogInContainer
+        logIn={logIn}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+    </>
   );
 };
 
