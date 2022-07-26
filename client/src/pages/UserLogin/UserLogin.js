@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { StateContext } from '../../App';
 
 const UserLogin = () => {
-  const [logIn, setLogIn] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
   const { setState } = useContext(StateContext);
 
   const navigate = useNavigate();
 
-  const handleChange = () => setLogIn(!logIn);
+  const handleChange = () => setIsLoggingIn(!isLoggingIn);
 
   const handleLogIn = async (username, password) => {
     const response = await axios.post(
@@ -42,7 +42,7 @@ const UserLogin = () => {
 
   const handleSubmit = (username, password) => {
     if (username && password) {
-      if (logIn) {
+      if (isLoggingIn) {
         return handleLogIn(username, password);
       }
       handleSignUp(username, password);
@@ -51,7 +51,7 @@ const UserLogin = () => {
   return (
     <>
       <LogInContainer
-        logIn={logIn}
+        isLoggingIn={isLoggingIn}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />

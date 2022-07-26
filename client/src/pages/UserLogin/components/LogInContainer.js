@@ -10,10 +10,10 @@ import {
 } from '../../../styles/userLoginStyles.js';
 
 const LogInContainer = (props) => {
-  const { logIn, handleChange, handleSubmit } = props;
+  const { isLoggingIn, handleChange, handleSubmit } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const text = logIn ? 'LOG IN' : 'SIGN UP';
+  const loginText = isLoggingIn ? 'LOG IN' : 'SIGN UP';
 
   return (
     <Box sx={loginPageStyles}>
@@ -43,7 +43,7 @@ const LogInContainer = (props) => {
             alignItems="center"
             md={2}
           >
-            <Typography sx={whiteText}>{text}</Typography>
+            <Typography sx={whiteText}>{loginText}</Typography>
           </Grid>
           <Grid item md={2}>
             <Input
@@ -71,7 +71,7 @@ const LogInContainer = (props) => {
               type="button"
               onClick={() => handleSubmit(username, password)}
             >
-              {text}
+              {loginText}
             </Button>
           </Grid>
           <Grid item container justifyContent="center" md={1}>
