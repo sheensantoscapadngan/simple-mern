@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { StateContext } from '../../App';
 
 const UserLogin = () => {
-  const [logIn, setLogIn] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
   const { setState } = useContext(StateContext);
 
   const navigate = useNavigate();
 
-  const handleChange = () => setLogIn(!logIn);
+  const handleChange = () => setIsLoggingIn(!isLoggingIn);
 
   const handleLogIn = async (username, password) => {
     const response = await axios.post(
@@ -40,35 +40,22 @@ const UserLogin = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const username = e?.target[0]?.value;
-    const password = e?.target[1]?.value;
+  const handleSubmit = (username, password) => {
     if (username && password) {
-      if (logIn) {
+      if (isLoggingIn) {
         return handleLogIn(username, password);
       }
       handleSignUp(username, password);
     }
   };
-
   return (
-    <div>
-      <h1>PET NAMES</h1>
-      <p>
-        Log In to access site{' '}
-        <span>
-          <button onClick={handleChange}>Log in</button>
-        </span>
-      </p>
-      <p>
-        Don't have an account?{' '}
-        <span>
-          <button onClick={handleChange}>Sign up</button>
-        </span>
-      </p>
-      <LogInContainer logIn={logIn} handleSubmit={handleSubmit} />
-    </div>
+    <>
+      <LogInContainer
+        isLoggingIn={isLoggingIn}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+    </>
   );
 };
 

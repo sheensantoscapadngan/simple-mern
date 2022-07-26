@@ -6,7 +6,6 @@ export const ErrorHandler = (err, req, res, next) => {
 
   res.status(err.status || defaultError.status).json({
     success: false,
-    data: {},
     msg: err.message || defaultError.message,
   });
 
