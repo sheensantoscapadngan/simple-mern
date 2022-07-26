@@ -1,6 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { StateContext } from '../../App';
+import { Box, Typography } from '@mui/material';
+import AnimalTypeBox from './components/AnimalTypeBox';
+import {
+  homePageContainer,
+  animalTypeContainer,
+  titleText,
+} from '../../styles/home/animalTypeBoxStyles';
 
 const HomePage = () => {
   const { state } = useContext(StateContext);
@@ -18,6 +25,7 @@ const HomePage = () => {
         'http://localhost:5000/api/v1/animals',
         config
       );
+      console.log(response.data);
       const data = response.data.animalList;
       setAnimalTypes(data);
     } catch (error) {
@@ -30,17 +38,12 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>HomePage</h1>
-      <h2>Animal Types:</h2>
-      {animalTypes.map((animalType) => {
-        return (
-          <>
-            <h3>{animalType}</h3>
-          </>
-        );
-      })}
-    </div>
+    <Box sx={homePageContainer}>
+      <Typography variant="h2" sx={titleText}>
+        Pet oPet
+      </Typography>
+      <AnimalTypeBox sx={animalTypeContainer} animalTypes={animalTypes} />
+    </Box>
   );
 };
 
