@@ -8,9 +8,7 @@ export const getAnimalList = async (req, res) => {
   const collectionNames = collections
     .filter((collection) => collection.name !== 'users')
     .map((collection) => collection.name);
-  res
-    .status(200)
-    .send({ success: true, data: { animalList: collectionNames } });
+  res.status(200).send({ success: true, animalList: collectionNames });
 };
 
 export const getAnimal = async (req, res) => {
@@ -38,7 +36,8 @@ export const getAnimal = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      data: { names: allNames, totalNames: totalNames },
+      names: allNames,
+      totalNames: totalNames,
     });
   } catch (error) {
     console.error(error);
@@ -65,7 +64,9 @@ export const createAnimal = async (req, res) => {
       animal.save();
       return res.status(200).json({
         success: true,
-        data: { type: type, name: name, owners: allOwnerUsernames },
+        type: type,
+        name: name,
+        owners: allOwnerUsernames,
       });
     }
 
@@ -76,7 +77,9 @@ export const createAnimal = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      data: { type: type, name: name, owners: user.username },
+      type: type,
+      name: name,
+      owners: user.username,
     });
   } catch (error) {
     console.error(error);
