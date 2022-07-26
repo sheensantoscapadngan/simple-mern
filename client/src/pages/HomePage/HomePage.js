@@ -18,7 +18,7 @@ const HomePage = () => {
         'http://localhost:5000/api/v1/animals',
         config
       );
-      const data = response.data.data.animalList;
+      const data = response.data.animalList;
       setAnimalTypes(data);
     } catch (error) {
       console.log(error);
