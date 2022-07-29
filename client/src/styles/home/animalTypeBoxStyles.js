@@ -17,10 +17,9 @@ export const animalTypeContainer = {
 
 export const animalTypeCard = {
   backgroundColor: '#585353',
-  marginLeft: '0.0625%',
 };
 
 export const petListText = {
-  padding: '20px 0 30px 5%',
+  padding: '20px 0 30px 0',
   textAlign: 'left',
 };

@@ -3,6 +3,7 @@ import { Grid, Typography, Button } from '@mui/material';
 import {
   addAnimalButton,
   addAnimalContainer,
+  addAnimalInputContainer,
 } from '../../../styles/home/addAnimalStyles';
 import AddAnimalInput from './AddAnimalInput';
 
@@ -28,8 +29,8 @@ const AddAnimal = (props) => {
         item
         container
         direction="column"
-        alignItems="center"
         justifyContent="center"
+        sx={addAnimalInputContainer}
       >
         <AddAnimalInput
           inputType="Name"
