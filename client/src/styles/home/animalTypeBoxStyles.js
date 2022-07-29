@@ -6,13 +6,13 @@ export const homePageContainer = {
 };
 
 export const titleText = {
-  padding: '20px 0 20px 0',
+  padding: '15px 0 15px 0',
 };
 
 export const animalTypeContainer = {
   backgroundColor: '#D9D9D9',
   width: '90%',
-  padding: '10px 5% 20px 5%',
+  padding: '5px 5% 20px 5%',
 };
 
 export const animalTypeCard = {

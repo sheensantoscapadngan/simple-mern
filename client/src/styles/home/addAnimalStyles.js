@@ -23,6 +23,6 @@ export const addAnimalContainer = {
   color: 'white',
   backgroundColor: '#585353',
   width: '50%',
-  margin: '30px 25% 30px 25%',
+  margin: '20px 25% 0 25%',
   padding: '10px 3px',
 };
