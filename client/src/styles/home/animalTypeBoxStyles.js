@@ -11,34 +11,16 @@ export const titleText = {
 
 export const animalTypeContainer = {
   backgroundColor: '#D9D9D9',
-  width: '100%',
-  padding: '10px 0 20px 0',
-};
-
-export const addAnimalTypeContainer = {
-  backgroundColor: '#585353',
-  width: '50%',
-  margin: '0 25% 30px 25%',
-  padding: '5px 3px',
-  color: 'white',
+  width: '90%',
+  padding: '10px 5% 20px 5%',
 };
 
 export const animalTypeCard = {
   backgroundColor: '#585353',
+  marginLeft: '0.0625%',
 };
 
 export const petListText = {
   padding: '20px 0 30px 5%',
   textAlign: 'left',
-};
-
-export const addAnimalTypeButton = {
-  color: 'white',
-  after: { backgroundColor: '#585353' },
-  ':hover': { backgroundColor: '#B0A8A8' },
-};
-
-export const addAnimalTypeInput = {
-  color: 'white',
-  '::after': { borderColor: '#B0A8A8' },
 };
