@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LogInContainer from './components/LogInContainer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { setLoginToken } from '../../utils/authSessionStorage';
 
 const UserLogin = () => {
   const [isLoggingIn, setIsLoggingIn] = useState(true);
@@ -19,7 +20,7 @@ const UserLogin = () => {
       }
     );
     const data = response.data;
-    sessionStorage.setItem('loginToken', data.token);
+    setLoginToken(data.token);
     navigate('/');
   };
 
