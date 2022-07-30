@@ -15,7 +15,7 @@ const AnimalTypeBox = (props) => {
         List of Pets
       </Typography>
       <Grid container spacing={5} justifyContent="space-evenly">
-        {animalTypes.map((animalType, index) => {
+        {animalTypes.map((animalType) => {
           return (
             <Grid item md={4} key={animalType}>
               <AnimalTypeCard animalType={animalType} />
