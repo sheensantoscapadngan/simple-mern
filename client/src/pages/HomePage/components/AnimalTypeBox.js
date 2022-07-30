@@ -8,15 +8,16 @@ import AnimalTypeCard from './AnimalTypeCard';
 
 const AnimalTypeBox = (props) => {
   const { animalTypes } = props;
+
   return (
     <Box sx={animalTypeContainer}>
       <Typography variant="h4" sx={petListText}>
         List of Pets
       </Typography>
       <Grid container spacing={5} justifyContent="space-evenly">
-        {animalTypes.map((animalType) => {
+        {animalTypes.map((animalType, index) => {
           return (
-            <Grid item md={4}>
+            <Grid item md={4} key={animalType}>
               <AnimalTypeCard animalType={animalType} />
             </Grid>
           );
