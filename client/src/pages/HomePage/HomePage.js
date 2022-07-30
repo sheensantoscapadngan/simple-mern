@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { StateContext } from '../../App';
 import { Box, Typography } from '@mui/material';
 import AnimalTypeBox from './components/AnimalTypeBox';
 import AddAnimal from './components/AddAnimal';
@@ -9,6 +8,7 @@ import {
   animalTypeContainer,
   titleText,
 } from '../../styles/home/animalTypeBoxStyles';
+import { StateContext } from '../../App';
 
 const HomePage = () => {
   const { state } = useContext(StateContext);

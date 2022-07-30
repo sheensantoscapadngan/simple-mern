@@ -4,12 +4,15 @@ import HomePage from './pages/HomePage/HomePage';
 import UserLogin from './pages/UserLogin/UserLogin';
 import { createContext, useState } from 'react';
 import AuthorizedRoute from './components/AuthorizedRoute';
+import DisplayAnimalsPage from './pages/DisplayAnimalsPage/DisplayAnimalsPage';
+import { getLoginToken } from './utils/authSessionStorage';
 
 export const StateContext = createContext();
 
 function App() {
+  const loginToken = getLoginToken();
   const [state, setState] = useState({
-    token: undefined, //check first localstorage if naay token na store, if naa mao ang value gamiton
+    token: loginToken || undefined,
   });
 
   return (
@@ -22,6 +25,14 @@ function App() {
               element={
                 <AuthorizedRoute>
                   <HomePage />
+                </AuthorizedRoute>
+              }
+            />
+            <Route
+              path="animals"
+              element={
+                <AuthorizedRoute>
+                  <DisplayAnimalsPage />
                 </AuthorizedRoute>
               }
             />
