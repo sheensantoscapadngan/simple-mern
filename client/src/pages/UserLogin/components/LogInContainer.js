@@ -10,7 +10,7 @@ import {
 } from '../../../styles/userLoginStyles.js';
 
 const LogInContainer = (props) => {
-  const { isLoggingIn, handleChange, handleSubmit } = props;
+  const { isLoggingIn, onChange: handleChange, onSubmit: handleSubmit } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const loginText = isLoggingIn ? 'LOG IN' : 'SIGN UP';

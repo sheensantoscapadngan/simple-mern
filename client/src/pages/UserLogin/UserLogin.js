@@ -27,16 +27,12 @@ const UserLogin = () => {
 
   const handleSignUp = async (username, password) => {
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/v1/user/sign-up',
-        {
-          username: username,
-          password: password,
-        }
-      );
-      console.log(response.data);
+      await axios.post('http://localhost:5000/api/v1/user/sign-up', {
+        username: username,
+        password: password,
+      });
     } catch (error) {
-      console.log(error.response.data.msg);
+      console.error(error.response);
     }
   };
 
@@ -52,8 +48,8 @@ const UserLogin = () => {
     <>
       <LogInContainer
         isLoggingIn={isLoggingIn}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
       />
     </>
   );
