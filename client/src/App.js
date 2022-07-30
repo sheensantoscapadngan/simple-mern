@@ -12,7 +12,7 @@ export const StateContext = createContext();
 function App() {
   const loginToken = getLoginToken();
   const [state, setState] = useState({
-    token: !loginToken ? undefined : loginToken,
+    token: loginToken || undefined,
   });
 
   return (
