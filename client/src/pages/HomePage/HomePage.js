@@ -37,14 +37,13 @@ const HomePage = () => {
   const handleAddAnimal = async (newAnimal) => {
     const { name, type } = newAnimal;
     try {
-      if (name && type) {
-        await axios.put(
-          'http://localhost:5000/api/v1/animals/create',
-          { type, name },
-          axiosConfig
-        );
-        fetchData();
-      }
+      if (!name || !type) return;
+      await axios.put(
+        'http://localhost:5000/api/v1/animals/create',
+        { type, name },
+        axiosConfig
+      );
+      fetchData();
     } catch (error) {
       console.error(error.response);
     }
