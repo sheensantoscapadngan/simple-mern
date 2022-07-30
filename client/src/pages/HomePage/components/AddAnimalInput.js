@@ -3,11 +3,16 @@ import { Grid, Typography, Input } from '@mui/material';
 import {
   addAnimalInput,
   addAnimalInputContainer,
-  addAnimalInputLabel,
 } from '../../../styles/home/addAnimalStyles';
 
 const AddAnimalInput = (props) => {
   const { inputType, newAnimal, setNewAnimal } = props;
+
+  const handleAnimalInput = (e) => {
+    const newAnimalInput = e.target.value;
+    setNewAnimal({ ...newAnimal, [inputType.toLowerCase()]: newAnimalInput });
+  };
+
   return (
     <Grid
       item
@@ -23,12 +28,7 @@ const AddAnimalInput = (props) => {
         <Input
           sx={addAnimalInput}
           value={newAnimal[inputType.toLowerCase()]}
-          onChange={(e) =>
-            setNewAnimal({
-              ...newAnimal,
-              [inputType.toLowerCase()]: e.target.value,
-            })
-          }
+          onChange={(e) => handleAnimalInput(e)}
         />
       </Grid>
     </Grid>

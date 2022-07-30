@@ -26,22 +26,25 @@ const HomePage = () => {
         'http://localhost:5000/api/v1/animals',
         axiosConfig
       );
-      const data = response.data.animalList;
-      setAnimalTypes(data);
+      const data = response.data;
+      const animalList = data.animalList;
+      setAnimalTypes(animalList);
     } catch (error) {
       console.error(error.response);
     }
   };
 
-  const addAnimal = async (newAnimal) => {
+  const handleAddAnimal = async (newAnimal) => {
     const { name, type } = newAnimal;
     try {
-      const response = await axios.put(
-        'http://localhost:5000/api/v1/animals/create',
-        { type, name },
-        axiosConfig
-      );
-      fetchData();
+      if (name && type) {
+        await axios.put(
+          'http://localhost:5000/api/v1/animals/create',
+          { type, name },
+          axiosConfig
+        );
+        fetchData();
+      }
     } catch (error) {
       console.error(error.response);
     }
@@ -57,7 +60,7 @@ const HomePage = () => {
         Pet oPet
       </Typography>
       <AnimalTypeBox sx={animalTypeContainer} animalTypes={animalTypes} />
-      <AddAnimal addAnimal={addAnimal} />
+      <AddAnimal onAddAnimal={handleAddAnimal} />
     </Box>
   );
 };

@@ -3,7 +3,6 @@ import { Grid, Typography, Box } from '@mui/material';
 import {
   animalTypeContainer,
   petListText,
-  animalTypeMargin,
 } from '../../../styles/home/animalTypeBoxStyles';
 import AnimalTypeCard from './AnimalTypeCard';
 
@@ -14,11 +13,7 @@ const AnimalTypeBox = (props) => {
       <Typography variant="h4" sx={petListText}>
         List of Pets
       </Typography>
-      <Grid
-        container
-        spacing={5}
-        justifyContent="space-evenly"
-      >
+      <Grid container spacing={5} justifyContent="space-evenly">
         {animalTypes.map((animalType) => {
           return (
             <Grid item md={4}>

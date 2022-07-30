@@ -8,7 +8,7 @@ import {
 import AddAnimalInput from './AddAnimalInput';
 
 const AddAnimal = (props) => {
-  const { addAnimal } = props;
+  const { onAddAnimal: handleAddAnimal } = props;
   const [newAnimal, setNewAnimal] = useState({
     name: '',
     type: '',
@@ -44,7 +44,7 @@ const AddAnimal = (props) => {
         />
       </Grid>
       <Grid item>
-        <Button sx={addAnimalButton} onClick={() => addAnimal(newAnimal)}>
+        <Button sx={addAnimalButton} onClick={() => handleAddAnimal(newAnimal)}>
           Add
         </Button>
       </Grid>
