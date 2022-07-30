@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import LogInContainer from './components/LogInContainer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { setLoginToken } from '../../utils/authSessionStorage';
+import { StateContext } from '../../App';
 
 const UserLogin = () => {
+  const { setState } = useContext(StateContext);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
 
   const navigate = useNavigate();
@@ -20,6 +22,7 @@ const UserLogin = () => {
       }
     );
     const data = response.data;
+    setState({ token: data.token });
     setLoginToken(data.token);
     navigate('/');
   };
