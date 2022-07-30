@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { StateContext } from '../../App';
 import { Box, Typography } from '@mui/material';
 import AnimalTypeBox from './components/AnimalTypeBox';
 import AddAnimal from './components/AddAnimal';
@@ -11,12 +10,12 @@ import {
 } from '../../styles/home/animalTypeBoxStyles';
 
 const HomePage = () => {
-  const { state } = useContext(StateContext);
+  const loginToken = sessionStorage.getItem('loginToken');
   const [animalTypes, setAnimalTypes] = useState([]);
 
   const axiosConfig = {
     headers: {
-      Authorization: `Bearer ${state.token}`,
+      Authorization: `Bearer ${loginToken}`,
     },
   };
 

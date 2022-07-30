@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage/HomePage';
 import UserLogin from './pages/UserLogin/UserLogin';
 import { createContext, useState } from 'react';
 import AuthorizedRoute from './components/AuthorizedRoute';
+import DisplayAnimalsPage from './pages/DisplayAnimalsPage/DisplayAnimalsPage';
 
 export const StateContext = createContext();
 
@@ -22,6 +23,14 @@ function App() {
               element={
                 <AuthorizedRoute>
                   <HomePage />
+                </AuthorizedRoute>
+              }
+            />
+            <Route
+              path="animals"
+              element={
+                <AuthorizedRoute>
+                  <DisplayAnimalsPage />
                 </AuthorizedRoute>
               }
             />

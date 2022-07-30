@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router';
-import { StateContext } from '../App';
 
 const AuthorizedRoute = (props) => {
   const { children } = props;
-  const { state } = useContext(StateContext);
+  const loginToken = sessionStorage.getItem('loginToken');
 
-  if (!state.token) {
+  if (!loginToken) {
     return <Navigate to="/login" />;
   }
 
