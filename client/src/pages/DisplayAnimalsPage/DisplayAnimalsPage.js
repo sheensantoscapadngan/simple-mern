@@ -3,9 +3,11 @@ import { Box } from '@mui/material';
 import { displayAnimalsPage } from '../../styles/displayAnimalsPage/displayAnimalsPageStyles';
 import { StateContext } from '../../App';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const DisplayAnimalsPage = () => {
   const { state } = useContext(StateContext);
+  const { animalType } = useParams();
 
   const axiosConfig = {
     headers: {
@@ -15,7 +17,7 @@ const DisplayAnimalsPage = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      'http://localhost:5000/api/v1/animals/:animal',
+      `http://localhost:5000/api/v1/animals/${animalType}`,
       axiosConfig
     );
     const data = response.data;
