@@ -13,7 +13,12 @@ const LogInContainer = (props) => {
   const { isLoggingIn, onChange: handleChange, onSubmit: handleSubmit } = props;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const loginText = isLoggingIn ? 'LOG IN' : 'SIGN UP';
+  const changeLoginText = isLoggingIn
+    ? "Don't have an account?"
+    : 'Login to access site';
+  const changeLoginButtonText = isLoggingIn ? 'SIGN UP' : 'LOG IN';
 
   return (
     <Box sx={loginPageStyles}>
@@ -74,39 +79,21 @@ const LogInContainer = (props) => {
               {loginText}
             </Button>
           </Grid>
-          {!isLoggingIn ? (
-            <Grid item container justifyContent="center" md={2}>
-              <Typography variant="subtitle2" sx={whiteText}>
-                Login to access site
-              </Typography>
-              <Button
-                color="secondary"
-                variant="contained"
-                size="small"
-                type="button"
-                sx={buttonTextSize}
-                onClick={handleChange}
-              >
-                Log In
-              </Button>
-            </Grid>
-          ) : (
-            <Grid item container justifyContent="center" md={2}>
-              <Typography variant="subtitle2" sx={whiteText}>
-                Don't have an account?
-              </Typography>
-              <Button
-                color="secondary"
-                variant="contained"
-                type="button"
-                size="small"
-                sx={buttonTextSize}
-                onClick={handleChange}
-              >
-                Sign Up
-              </Button>
-            </Grid>
-          )}
+          <Grid item container justifyContent="center" md={2}>
+            <Typography variant="subtitle2" sx={whiteText}>
+              {changeLoginText}
+            </Typography>
+            <Button
+              color="secondary"
+              variant="contained"
+              size="small"
+              type="button"
+              sx={buttonTextSize}
+              onClick={handleChange}
+            >
+              {changeLoginButtonText}
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
