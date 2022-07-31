@@ -74,36 +74,39 @@ const LogInContainer = (props) => {
               {loginText}
             </Button>
           </Grid>
-          <Grid item container justifyContent="center" md={1}>
-            <Typography variant="subtitle2" sx={whiteText}>
-              Login to access site
-            </Typography>
-            <Button
-              color="secondary"
-              variant="contained"
-              size="small"
-              type="button"
-              sx={buttonTextSize}
-              onClick={handleChange}
-            >
-              Log In
-            </Button>
-          </Grid>
-          <Grid item container justifyContent="center" md={1}>
-            <Typography variant="subtitle2" sx={whiteText}>
-              Don't have an account?
-            </Typography>
-            <Button
-              color="secondary"
-              variant="contained"
-              type="button"
-              size="small"
-              sx={buttonTextSize}
-              onClick={handleChange}
-            >
-              Sign Up
-            </Button>
-          </Grid>
+          {!isLoggingIn ? (
+            <Grid item container justifyContent="center" md={2}>
+              <Typography variant="subtitle2" sx={whiteText}>
+                Login to access site
+              </Typography>
+              <Button
+                color="secondary"
+                variant="contained"
+                size="small"
+                type="button"
+                sx={buttonTextSize}
+                onClick={handleChange}
+              >
+                Log In
+              </Button>
+            </Grid>
+          ) : (
+            <Grid item container justifyContent="center" md={2}>
+              <Typography variant="subtitle2" sx={whiteText}>
+                Don't have an account?
+              </Typography>
+              <Button
+                color="secondary"
+                variant="contained"
+                type="button"
+                size="small"
+                sx={buttonTextSize}
+                onClick={handleChange}
+              >
+                Sign Up
+              </Button>
+            </Grid>
+          )}
         </Grid>
       </Grid>
     </Box>
