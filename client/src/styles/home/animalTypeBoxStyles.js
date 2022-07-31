@@ -1,8 +1,9 @@
 export const homePageContainer = {
   width: '70%',
-  height: '100vh',
+  height: '100%',
   margin: '0 15% 0 15%',
   backgroundColor: '#B0A8A8',
+  padding: '0 0 25px 0',
 };
 
 export const titleText = {
