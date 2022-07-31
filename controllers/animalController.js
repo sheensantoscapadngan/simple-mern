@@ -11,6 +11,14 @@ export const getAnimalList = async (req, res) => {
   res.status(200).send({ success: true, animalList: collectionNames });
 };
 
+const doesCollectionExist = async (collectionName) => {
+  const collections = await (
+    await mongoose.connection.db.listCollections().toArray()
+  ).map((collection) => collection.name);
+
+  return collections.includes(collectionName);
+};
+
 export const getAnimal = async (req, res) => {
   const { animal } = req.params;
 
@@ -19,6 +27,13 @@ export const getAnimal = async (req, res) => {
   }
 
   try {
+    if (!(await doesCollectionExist(animal))) {
+      return res.status(400).json({
+        success: false,
+        msg: 'Animal does not exist',
+      });
+    }
+
     const AnimalModel = mongoose.model(animal, AnimalSchema);
 
     const limit = 10;
