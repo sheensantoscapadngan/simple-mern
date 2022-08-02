@@ -17,7 +17,7 @@ function App() {
   });
 
   return (
-    <StateContext.Provider value={{ state, setState}}>
+    <StateContext.Provider value={{ state, setState }}>
       <div className="App">
         <BrowserRouter>
           <Routes>
