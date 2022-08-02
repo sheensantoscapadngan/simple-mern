@@ -1,13 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { displayAnimalsPage } from '../../styles/displayAnimalsPage/displayAnimalsPageStyles';
 import { StateContext } from '../../App';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import Pagination from './Pagination';
 
 const DisplayAnimalsPage = () => {
   const { state } = useContext(StateContext);
   const { animalType } = useParams();
+  const navigate = useNavigate();
+
+  const [totalPages, setTotalPages] = useState(0);
+  const [animals, setAnimals] = useState([]);
 
   const axiosConfig = {
     headers: {
@@ -15,19 +20,40 @@ const DisplayAnimalsPage = () => {
     },
   };
 
-  const fetchData = async () => {
+  const fetchData = async (currentPage = 1) => {
     const response = await axios.get(
-      `http://localhost:5000/api/v1/animals/${animalType}`,
+      `http://localhost:5000/api/v1/animals/${animalType}?page=${currentPage}`,
       axiosConfig
     );
     const data = response.data;
-    console.log(data);
+    const totalNames = data.totalNames;
+    const totalPageData = Math.ceil(totalNames / 10);
+
+    setTotalPages(totalPageData);
+    setAnimals(data.names);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
-  return <Box sx={displayAnimalsPage}>All Animals</Box>;
+
+  const handlePageNumberClick = (pageNumber) => {
+    fetchData(pageNumber);
+    navigate(`/animals/${animalType}?page=${pageNumber}`);
+  };
+
+  return (
+    <Box sx={displayAnimalsPage}>
+      List of {animalType}
+      {animals.map((animal, index) => {
+        return <h3 key={index}>{animal.name}</h3>;
+      })}
+      <Pagination
+        totalPages={totalPages}
+        onPageNumberClick={handlePageNumberClick}
+      />
+    </Box>
+  );
 };
 
 export default DisplayAnimalsPage;

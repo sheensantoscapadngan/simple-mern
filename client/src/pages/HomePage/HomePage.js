@@ -11,7 +11,7 @@ import {
 import { StateContext } from '../../App';
 
 const HomePage = () => {
-  const { state } = useContext(StateContext);
+  const { state} = useContext(StateContext);
   const [animalTypes, setAnimalTypes] = useState([]);
 
   const axiosConfig = {
