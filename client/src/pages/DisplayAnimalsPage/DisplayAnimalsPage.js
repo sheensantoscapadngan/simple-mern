@@ -5,6 +5,7 @@ import { StateContext } from '../../App';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Pagination from './Pagination';
+import { ANIMAL_PER_PAGE } from '../../constants/constants';
 
 const DisplayAnimalsPage = () => {
   const { state } = useContext(StateContext);
@@ -27,7 +28,7 @@ const DisplayAnimalsPage = () => {
     );
     const data = response.data;
     const totalNames = data.totalNames;
-    const totalPageData = Math.ceil(totalNames / 10);
+    const totalPageData = Math.ceil(totalNames / ANIMAL_PER_PAGE);
 
     setTotalPages(totalPageData);
     setAnimals(data.names);

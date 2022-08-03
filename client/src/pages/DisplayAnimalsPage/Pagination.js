@@ -3,11 +3,8 @@ import { Grid, Typography } from '@mui/material';
 
 const Pagination = (props) => {
   const { totalPages, onPageNumberClick: handlePageNumberClick } = props;
-  const pageNumbers = [];
 
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+  const pageNumbers = [...Array(totalPages).keys()].map((i) => i + 1);
 
   return (
     <>
