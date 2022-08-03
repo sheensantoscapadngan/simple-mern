@@ -6,6 +6,7 @@ import { createContext, useState } from 'react';
 import AuthorizedRoute from './components/AuthorizedRoute';
 import DisplayAnimalsPage from './pages/DisplayAnimalsPage/DisplayAnimalsPage';
 import { getLoginToken } from './utils/authSessionStorage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 export const StateContext = createContext();
 
@@ -29,7 +30,7 @@ function App() {
               }
             />
             <Route
-              path="animals"
+              path="animals/:animalType"
               element={
                 <AuthorizedRoute>
                   <DisplayAnimalsPage />
@@ -37,6 +38,7 @@ function App() {
               }
             />
             <Route path="/login" element={<UserLogin />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
       </div>
